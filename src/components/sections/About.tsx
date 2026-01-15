@@ -7,6 +7,7 @@ const highlights = [
   {
     icon: Monitor,
     title: 'Frontend Excellence',
+    color: 'from-blue-500 to-cyan-500',
     skills: [
       'React 18/19, TypeScript, Next.js',
       'State: Zustand, TanStack Query',
@@ -17,6 +18,7 @@ const highlights = [
   {
     icon: Server,
     title: 'Backend & Infrastructure',
+    color: 'from-emerald-500 to-teal-500',
     skills: [
       'Node.js, Express, REST APIs',
       'Firebase, Firestore, Cloud Run',
@@ -27,6 +29,7 @@ const highlights = [
   {
     icon: Chrome,
     title: 'Chrome Extension Expert',
+    color: 'from-violet-500 to-purple-500',
     skills: [
       'Manifest V3 Architecture',
       'Service Workers, Content Scripts',
@@ -37,6 +40,7 @@ const highlights = [
   {
     icon: Wifi,
     title: 'Real-time & Offline',
+    color: 'from-amber-500 to-orange-500',
     skills: [
       'WebRTC P2P Connections',
       'Yjs CRDT Collaboration',
@@ -47,6 +51,7 @@ const highlights = [
   {
     icon: Brain,
     title: 'AI Integration',
+    color: 'from-pink-500 to-rose-500',
     skills: [
       'Google Vertex AI & Gemini',
       'AI Content Detection',
@@ -57,6 +62,7 @@ const highlights = [
   {
     icon: Sparkles,
     title: 'Specialized Skills',
+    color: 'from-indigo-500 to-blue-500',
     skills: [
       'i18n/l10n (19+ languages)',
       'Payment Integration (LemonSqueezy)',
@@ -68,7 +74,7 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="py-16 sm:py-24 relative">
+    <section id="about" className="py-16 sm:py-24 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle 
           title="About Me" 
@@ -99,14 +105,72 @@ export function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {highlights.map((highlight, index) => (
             <AnimatedSection key={highlight.title} delay={index * 0.1}>
-              <Card className="h-full">
-                <CardHeader>
+              <Card className="h-full relative overflow-hidden group">
+                {/* Animated wave background */}
+                <div className="absolute inset-0 overflow-hidden">
+                  {/* Wave 1 */}
+                  <div 
+                    className={`absolute -bottom-1/2 -left-1/4 w-[150%] h-full bg-gradient-to-t ${highlight.color} opacity-[0.03] rounded-[50%] group-hover:opacity-[0.08] transition-opacity duration-500`}
+                    style={{
+                      animation: 'wave 8s ease-in-out infinite',
+                    }}
+                  />
+                  {/* Wave 2 */}
+                  <div 
+                    className={`absolute -bottom-1/2 -left-1/4 w-[150%] h-full bg-gradient-to-t ${highlight.color} opacity-[0.02] rounded-[50%] group-hover:opacity-[0.06] transition-opacity duration-500`}
+                    style={{
+                      animation: 'wave 10s ease-in-out infinite reverse',
+                      animationDelay: '-2s',
+                    }}
+                  />
+                  {/* Wave 3 */}
+                  <div 
+                    className={`absolute -bottom-1/2 -left-1/4 w-[150%] h-full bg-gradient-to-t ${highlight.color} opacity-[0.015] rounded-[50%] group-hover:opacity-[0.05] transition-opacity duration-500`}
+                    style={{
+                      animation: 'wave 12s ease-in-out infinite',
+                      animationDelay: '-4s',
+                    }}
+                  />
+                </div>
+                
+                {/* Floating particles */}
+                <div className="absolute inset-0 overflow-hidden opacity-30">
+                  <div 
+                    className={`absolute w-1 h-1 rounded-full bg-gradient-to-r ${highlight.color}`}
+                    style={{
+                      top: '20%',
+                      left: '10%',
+                      animation: 'float 6s ease-in-out infinite',
+                    }}
+                  />
+                  <div 
+                    className={`absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r ${highlight.color}`}
+                    style={{
+                      top: '60%',
+                      right: '15%',
+                      animation: 'float 8s ease-in-out infinite reverse',
+                      animationDelay: '-2s',
+                    }}
+                  />
+                  <div 
+                    className={`absolute w-1 h-1 rounded-full bg-gradient-to-r ${highlight.color}`}
+                    style={{
+                      top: '40%',
+                      right: '30%',
+                      animation: 'float 7s ease-in-out infinite',
+                      animationDelay: '-3s',
+                    }}
+                  />
+                </div>
+
+                {/* Content */}
+                <CardHeader className="relative z-10">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center mb-4">
                     <highlight.icon className="w-6 h-6 text-indigo-400" />
                   </div>
                   <CardTitle>{highlight.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <ul className="space-y-2">
                     {highlight.skills.map((skill) => (
                       <li key={skill} className="text-gray-400 text-sm flex items-start gap-2">
@@ -120,6 +184,28 @@ export function About() {
             </AnimatedSection>
           ))}
         </div>
+
+        {/* CSS Animations */}
+        <style>{`
+          @keyframes wave {
+            0%, 100% {
+              transform: translateY(0) rotate(0deg);
+            }
+            50% {
+              transform: translateY(-20px) rotate(2deg);
+            }
+          }
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0) translateX(0);
+              opacity: 0.3;
+            }
+            50% {
+              transform: translateY(-20px) translateX(10px);
+              opacity: 0.6;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

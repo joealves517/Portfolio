@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { useHeaderVisibility } from '@/hooks/useHeaderVisibility';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -15,6 +16,7 @@ const navItems = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const activeSection = useScrollSpy(navItems.map(item => item.id));
+  const isVisible = useHeaderVisibility((state) => state.isVisible);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -23,6 +25,8 @@ export function Header() {
       setMobileMenuOpen(false);
     }
   };
+
+  if (!isVisible) return null;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">

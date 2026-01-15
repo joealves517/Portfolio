@@ -10,6 +10,10 @@ export interface Project {
   metrics: { label: string; value: string }[];
   links: { label: string; url: string; icon: string }[];
   image?: string;
+  iconImage?: string;
+  screenshots?: string[];
+  gradientFrom?: string;
+  gradientTo?: string;
 }
 
 export const projects: Project[] = [
@@ -39,7 +43,17 @@ export const projects: Project[] = [
     links: [
       { label: 'Web App', url: 'https://gnote.graphosai.com', icon: 'ExternalLink' },
       { label: 'Chrome Extension', url: 'https://chromewebstore.google.com/detail/pncgcnggbbbgnhdniigjndekfmmblioj', icon: 'Chrome' }
-    ]
+    ],
+    iconImage: 'icons/G-Note.png',
+    screenshots: [
+      'G-Note image/unnamed.png',
+      'G-Note image/unnamed (1).png',
+      'G-Note image/unnamed (2).png',
+      'G-Note image/unnamed (3).png',
+      'G-Note image/unnamed (4).png'
+    ],
+    gradientFrom: 'from-emerald-500/30',
+    gradientTo: 'to-teal-600/20'
   },
   {
     id: 'graphos-ai-studio',
@@ -69,7 +83,17 @@ export const projects: Project[] = [
       { label: 'Website', url: 'https://graphosai.com', icon: 'ExternalLink' },
       { label: 'Web App', url: 'https://app.graphosai.com', icon: 'ExternalLink' },
       { label: 'Chrome Extension', url: 'https://chromewebstore.google.com/detail/nedkeccobejcenjdkegndfejblbjplol', icon: 'Chrome' }
-    ]
+    ],
+    iconImage: 'icons/GraphosAI.png',
+    screenshots: [
+      'GraphosAI image/unnamed.png',
+      'GraphosAI image/unnamed (1).png',
+      'GraphosAI image/unnamed (2).png',
+      'GraphosAI image/unnamed (3).png',
+      'GraphosAI image/unnamed (5).png'
+    ],
+    gradientFrom: 'from-violet-500/30',
+    gradientTo: 'to-purple-600/20'
   },
   {
     id: 'localize-ai',
@@ -95,7 +119,17 @@ export const projects: Project[] = [
       { label: 'Supported Languages', value: '100+' },
       { label: 'Locale Translations', value: '90+' }
     ],
-    links: [{ label: 'Chrome Extension', url: 'https://chromewebstore.google.com/detail/iepjpfaadjlhedjnichldgkmfcjjcelk', icon: 'Chrome' }]
+    links: [{ label: 'Chrome Extension', url: 'https://chromewebstore.google.com/detail/iepjpfaadjlhedjnichldgkmfcjjcelk', icon: 'Chrome' }],
+    iconImage: 'icons/LocalizeAI.png',
+    screenshots: [
+      'LocalizeAI image/unnamed.png',
+      'LocalizeAI image/unnamed (1).png',
+      'LocalizeAI image/unnamed (2).png',
+      'LocalizeAI image/unnamed (3).png',
+      'LocalizeAI image/unnamed (4).png'
+    ],
+    gradientFrom: 'from-cyan-500/30',
+    gradientTo: 'to-blue-600/20'
   }
 ];
 
@@ -134,7 +168,7 @@ export const skills = {
 
 export const socialLinks = {
   github: 'https://github.com/alvesoscar517-cloud',
-  linkedin: 'https://linkedin.com/in/yourusername',
+  discord: 'https://discord.com/users/joejoe_baby',
   email: 'alvesoscar517@gmail.com',
   upwork: 'https://www.upwork.com/freelancers/~019c738622df4ea5b4'
 };

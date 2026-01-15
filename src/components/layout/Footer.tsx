@@ -1,5 +1,6 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Mail, Heart } from 'lucide-react';
 import { socialLinks } from '@/data/projects';
+import { DiscordIcon } from '@/components/shared/DiscordIcon';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,13 +29,13 @@ export function Footer() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href={socialLinks.linkedin}
+              href={socialLinks.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
-              aria-label="LinkedIn"
+              aria-label="Discord"
             >
-              <Linkedin className="w-5 h-5" />
+              <DiscordIcon className="w-5 h-5" />
             </a>
             <a
               href={`mailto:${socialLinks.email}`}

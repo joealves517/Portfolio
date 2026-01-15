@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { Mail, Download, ArrowDown, Users, Code2, Chrome, Github, Linkedin } from 'lucide-react';
+import { Mail, Download, ArrowDown, Users, Code2, Chrome, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { socialLinks } from '@/data/projects';
+import { DiscordIcon } from '@/components/shared/DiscordIcon';
 
 export function Hero() {
   const scrollToProjects = () => {
@@ -11,11 +12,11 @@ export function Hero() {
   const stats = [
     { icon: Users, value: '25K+', label: 'Users Served' },
     { icon: Code2, value: '100K+', label: 'Lines of Code' },
-    { icon: Chrome, value: '3', label: 'Chrome Extensions' },
+    { icon: Chrome, value: '8+', label: 'Chrome Extensions' },
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 z-10">
       <div className="absolute inset-0 hero-gradient" />
       
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-float" />
@@ -23,10 +24,29 @@ export function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
+          {/* Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
+            className="mb-6"
+          >
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full blur-lg opacity-50 animate-pulse" />
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-br from-indigo-500 to-purple-600">
+                <img
+                  src={`${import.meta.env.BASE_URL}avatar.png`}
+                  alt="Joe's avatar"
+                  className="w-full h-full rounded-full object-cover border-4 border-slate-900"
+                />
+              </div>
+            </div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
               Hi, I'm <span className="gradient-text">Joe</span>
@@ -39,7 +59,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="text-gray-400 text-lg max-w-2xl mx-auto mb-10"
           >
             Specializing in Chrome Extensions, PWAs, and AI-powered applications with 
@@ -49,7 +69,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 sm:mb-12 px-4 sm:px-0"
           >
             <Button variant="primary" size="lg" onClick={scrollToProjects} className="flex flex-row items-center gap-2 w-full sm:w-auto">
@@ -67,7 +87,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="flex items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-16"
           >
             <a
@@ -80,13 +100,13 @@ export function Hero() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href={socialLinks.linkedin}
+              href={socialLinks.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
-              aria-label="LinkedIn"
+              aria-label="Discord"
             >
-              <Linkedin className="w-5 h-5" />
+              <DiscordIcon className="w-5 h-5" />
             </a>
             <a
               href={`mailto:${socialLinks.email}`}
@@ -100,7 +120,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
             className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto px-2 sm:px-0"
           >
             {stats.map((stat, index) => (
@@ -108,12 +128,50 @@ export function Hero() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                className="text-center p-2 sm:p-4 rounded-xl bg-white/5 border border-white/10"
+                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                className="relative text-center p-2 sm:p-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden group hover:border-indigo-500/30 transition-all"
               >
-                <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 mx-auto mb-1 sm:mb-2" />
-                <div className="text-lg sm:text-2xl font-bold text-white">{stat.value}</div>
-                <div className="text-[10px] sm:text-xs text-gray-500 leading-tight">{stat.label}</div>
+                {/* Animated wave background */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(99, 102, 241, 0.1)" />
+                        <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M0,32 Q25,16 50,32 T100,32 L100,100 L0,100 Z"
+                      fill={`url(#gradient-${index})`}
+                      className="animate-wave"
+                    />
+                    <path
+                      d="M0,48 Q25,32 50,48 T100,48 L100,100 L0,100 Z"
+                      fill="rgba(99, 102, 241, 0.05)"
+                      className="animate-wave-slow"
+                    />
+                  </svg>
+                </div>
+                
+                {/* Geometric shapes background */}
+                <div className="absolute inset-0 opacity-30">
+                  <div className={`absolute top-0 right-0 w-16 h-16 bg-gradient-to-br ${
+                    index === 0 ? 'from-indigo-500/20 to-purple-500/20' :
+                    index === 1 ? 'from-purple-500/20 to-pink-500/20' :
+                    'from-pink-500/20 to-indigo-500/20'
+                  } rounded-full blur-xl transform translate-x-8 -translate-y-8`} />
+                  <div className={`absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr ${
+                    index === 0 ? 'from-purple-500/20 to-indigo-500/20' :
+                    index === 1 ? 'from-pink-500/20 to-purple-500/20' :
+                    'from-indigo-500/20 to-pink-500/20'
+                  } rounded-full blur-lg transform -translate-x-6 translate-y-6`} />
+                </div>
+
+                <div className="relative z-10">
+                  <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 mx-auto mb-1 sm:mb-2" />
+                  <div className="text-lg sm:text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-[10px] sm:text-xs text-gray-500 leading-tight">{stat.label}</div>
+                </div>
               </motion.div>
             ))}
           </motion.div>

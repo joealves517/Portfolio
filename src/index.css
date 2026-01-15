@@ -25,6 +25,30 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+/* Custom scrollbar for screenshot gallery */
+.scrollbar-thin::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
 * {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -77,4 +101,24 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-25%) translateY(-5%); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes wave-slow {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-15%) translateY(-3%); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.animate-wave {
+  animation: wave 3s ease-in-out infinite;
+}
+
+.animate-wave-slow {
+  animation: wave-slow 4s ease-in-out infinite;
 }
