@@ -12,9 +12,14 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 html::-webkit-scrollbar {
@@ -58,6 +63,21 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+/* Tối ưu hiệu suất rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration cho các elements có transform */
+.glass,
+.gradient-bg,
+.hero-gradient {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
@@ -86,12 +106,13 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-10px) translateZ(0); }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes pulse-glow {
@@ -101,24 +122,37 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
 @keyframes wave {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-25%) translateY(-5%); }
-  100% { transform: translateX(0) translateY(0); }
+  0% { transform: translateX(0) translateY(0) translateZ(0); }
+  50% { transform: translateX(-25%) translateY(-5%) translateZ(0); }
+  100% { transform: translateX(0) translateY(0) translateZ(0); }
 }
 
 @keyframes wave-slow {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-15%) translateY(-3%); }
-  100% { transform: translateX(0) translateY(0); }
+  0% { transform: translateX(0) translateY(0) translateZ(0); }
+  50% { transform: translateX(-15%) translateY(-3%) translateZ(0); }
+  100% { transform: translateX(0) translateY(0) translateZ(0); }
 }
 
 .animate-wave {
   animation: wave 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-wave-slow {
   animation: wave-slow 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Tối ưu hiệu suất cho animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-wave,
+  .animate-wave-slow {
+    animation: none;
+  }
 }

@@ -12,6 +12,7 @@ export function AnimatedSection({ children, className = '', delay = 0 }: Animate
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '50px',
   });
 
   return (
@@ -19,7 +20,12 @@ export function AnimatedSection({ children, className = '', delay = 0 }: Animate
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
+      transition={{ 
+        duration: 0.5, 
+        delay, 
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      style={{ willChange: inView ? 'auto' : 'transform, opacity' }}
       className={className}
     >
       {children}

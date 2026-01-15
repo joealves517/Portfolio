@@ -19,8 +19,8 @@ export function Hero() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 z-10">
       <div className="absolute inset-0 hero-gradient" />
       
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-float" style={{ transform: 'translateZ(0)' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s', transform: 'translateZ(0)' }} />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
@@ -29,6 +29,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
+            style={{ willChange: 'transform, opacity' }}
             className="mb-6"
           >
             <div className="relative inline-block">
@@ -46,7 +47,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
               Hi, I'm <span className="gradient-text">Joe</span>
@@ -59,7 +61,8 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-gray-400 text-lg max-w-2xl mx-auto mb-10"
           >
             Specializing in Chrome Extensions, PWAs, and AI-powered applications with 
@@ -69,7 +72,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ willChange: 'transform, opacity' }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 sm:mb-12 px-4 sm:px-0"
           >
             <Button variant="primary" size="lg" onClick={scrollToProjects} className="flex flex-row items-center gap-2 w-full sm:w-auto">
@@ -87,7 +91,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ willChange: 'transform, opacity' }}
             className="flex items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-16"
           >
             <a
@@ -120,7 +125,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ willChange: 'transform, opacity' }}
             className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto px-2 sm:px-0"
           >
             {stats.map((stat, index) => (
@@ -128,7 +134,8 @@ export function Hero() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+                style={{ willChange: 'transform, opacity' }}
                 className="relative text-center p-2 sm:p-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden group hover:border-indigo-500/30 transition-all"
               >
                 {/* Animated wave background */}
