@@ -6,10 +6,8 @@ import { Users, Code2, Chrome } from 'lucide-react';
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16 sm:py-24 relative z-10">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent" />
-      
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="projects" className="py-16 sm:py-24 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionTitle 
           title="Featured Projects" 
           subtitle="Production applications showcasing full-stack expertise"

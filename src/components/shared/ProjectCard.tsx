@@ -24,19 +24,19 @@ const projectStyles: Record<string, {
   patternOpacity: string;
 }> = {
   'gnote': {
-    bgGradient: 'from-emerald-600 via-teal-600 to-cyan-700',
-    glowColor: 'bg-emerald-500/40',
-    patternOpacity: 'opacity-20',
+    bgGradient: 'from-emerald-700 via-teal-800 to-cyan-900',
+    glowColor: 'bg-emerald-500/30',
+    patternOpacity: 'opacity-10',
   },
   'graphos-ai-studio': {
-    bgGradient: 'from-violet-600 via-purple-600 to-fuchsia-700',
-    glowColor: 'bg-purple-500/40',
-    patternOpacity: 'opacity-15',
+    bgGradient: 'from-violet-700 via-purple-800 to-fuchsia-900',
+    glowColor: 'bg-purple-500/30',
+    patternOpacity: 'opacity-10',
   },
   'localize-ai': {
-    bgGradient: 'from-cyan-600 via-blue-600 to-indigo-700',
-    glowColor: 'bg-blue-500/40',
-    patternOpacity: 'opacity-20',
+    bgGradient: 'from-cyan-700 via-blue-800 to-indigo-900',
+    glowColor: 'bg-blue-500/30',
+    patternOpacity: 'opacity-10',
   },
 };
 
@@ -58,11 +58,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         viewport={{ once: true, amount: 0.1 }}
         className="h-full"
       >
-        <Card className="h-full flex flex-col overflow-hidden group hover:border-indigo-500/30">
+        <Card className="h-full flex flex-col overflow-hidden group hover:border-indigo-500/30 bg-slate-900/50 backdrop-blur-sm">
           <div className="h-44 relative overflow-hidden shrink-0">
             <div className={`absolute inset-0 bg-gradient-to-br ${styles.bgGradient}`} />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15)_0%,transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.3)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.08)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.4)_0%,transparent_50%)]" />
             
             <div className={`absolute inset-0 ${styles.patternOpacity}`}>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[length:16px_16px]" />

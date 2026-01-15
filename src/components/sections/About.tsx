@@ -74,7 +74,7 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="py-16 sm:py-24 relative z-10">
+    <section id="about" className="py-16 sm:py-24 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle 
           title="About Me" 
@@ -96,7 +96,7 @@ export function About() {
             </p>
             <p>
               With <span className="text-indigo-400 font-medium">100,000+ lines of production code</span> and 
-              <span className="text-indigo-400 font-medium"> 3 published Chrome Extensions</span>, I understand 
+              <span className="text-indigo-400 font-medium"> 8+ Chrome Extensions</span>, I understand 
               what it takes to deliver reliable, performant software that users love.
             </p>
           </div>
@@ -105,11 +105,11 @@ export function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {highlights.map((highlight, index) => (
             <AnimatedSection key={highlight.title} delay={index * 0.05}>
-              <Card className="h-full relative overflow-hidden group">
-                {/* Simplified wave background - chỉ hiển thị khi hover */}
+              <Card className="h-full relative overflow-hidden group border-white/5">
+                {/* Wave background - hiển thị mặc định */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                   <div 
-                    className={`absolute -bottom-1/2 -left-1/4 w-[150%] h-full bg-gradient-to-t ${highlight.color} opacity-0 group-hover:opacity-[0.08] rounded-[50%] transition-opacity duration-500`}
+                    className={`absolute -bottom-1/2 -left-1/4 w-[150%] h-full bg-gradient-to-t ${highlight.color} opacity-[0.06] group-hover:opacity-[0.1] rounded-[50%] transition-opacity duration-500`}
                     style={{
                       animation: 'wave 8s ease-in-out infinite',
                       willChange: 'opacity',
@@ -117,7 +117,7 @@ export function About() {
                   />
                 </div>
                 
-                {/* Simplified floating particles - giảm số lượng */}
+                {/* Floating particles */}
                 <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
                   <div 
                     className={`absolute w-1 h-1 rounded-full bg-gradient-to-r ${highlight.color}`}

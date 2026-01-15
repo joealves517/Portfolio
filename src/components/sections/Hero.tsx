@@ -16,9 +16,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 z-10">
-      <div className="absolute inset-0 hero-gradient" />
-      
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-float" style={{ transform: 'translateZ(0)' }} />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s', transform: 'translateZ(0)' }} />
 
@@ -136,46 +134,28 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.6 + index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 style={{ willChange: 'transform, opacity' }}
-                className="relative text-center p-2 sm:p-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden group hover:border-indigo-500/30 transition-all"
+                className="relative text-center p-2 sm:p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] overflow-hidden group hover:border-indigo-500/20 transition-all"
               >
-                {/* Animated wave background */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="rgba(99, 102, 241, 0.1)" />
-                        <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M0,32 Q25,16 50,32 T100,32 L100,100 L0,100 Z"
-                      fill={`url(#gradient-${index})`}
-                      className="animate-wave"
-                    />
-                    <path
-                      d="M0,48 Q25,32 50,48 T100,48 L100,100 L0,100 Z"
-                      fill="rgba(99, 102, 241, 0.05)"
-                      className="animate-wave-slow"
-                    />
-                  </svg>
-                </div>
-                
-                {/* Geometric shapes background */}
-                <div className="absolute inset-0 opacity-30">
-                  <div className={`absolute top-0 right-0 w-16 h-16 bg-gradient-to-br ${
-                    index === 0 ? 'from-indigo-500/20 to-purple-500/20' :
-                    index === 1 ? 'from-purple-500/20 to-pink-500/20' :
-                    'from-pink-500/20 to-indigo-500/20'
-                  } rounded-full blur-xl transform translate-x-8 -translate-y-8`} />
-                  <div className={`absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr ${
-                    index === 0 ? 'from-purple-500/20 to-indigo-500/20' :
-                    index === 1 ? 'from-pink-500/20 to-purple-500/20' :
-                    'from-indigo-500/20 to-pink-500/20'
-                  } rounded-full blur-lg transform -translate-x-6 translate-y-6`} />
+                {/* Subtle gradient background */}
+                <div className="absolute inset-0 opacity-40">
+                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${
+                    index === 0 ? 'from-indigo-500/10 to-purple-500/10' :
+                    index === 1 ? 'from-purple-500/10 to-pink-500/10' :
+                    'from-emerald-500/10 to-teal-500/10'
+                  } rounded-full blur-2xl transform translate-x-10 -translate-y-10`} />
+                  <div className={`absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr ${
+                    index === 0 ? 'from-purple-500/10 to-indigo-500/10' :
+                    index === 1 ? 'from-pink-500/10 to-purple-500/10' :
+                    'from-teal-500/10 to-emerald-500/10'
+                  } rounded-full blur-xl transform -translate-x-8 translate-y-8`} />
                 </div>
 
                 <div className="relative z-10">
-                  <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 mx-auto mb-1 sm:mb-2" />
+                  <stat.icon className={`w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1 sm:mb-2 ${
+                    index === 0 ? 'text-indigo-400/80' :
+                    index === 1 ? 'text-purple-400/80' :
+                    'text-emerald-400/80'
+                  }`} />
                   <div className="text-lg sm:text-2xl font-bold text-white">{stat.value}</div>
                   <div className="text-[10px] sm:text-xs text-gray-500 leading-tight">{stat.label}</div>
                 </div>
