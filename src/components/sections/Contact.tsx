@@ -29,7 +29,7 @@ export function Contact() {
                   <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span>{socialLinks.email}</span>
+                  <span>Send an Email</span>
                 </a>
                 <a
                   href={socialLinks.discord}
